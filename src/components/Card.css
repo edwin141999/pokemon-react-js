@@ -1,0 +1,45 @@
+.card-fondo {
+    background-color: #000000;
+    width: 120px;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+.card-titulo {
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.card-div-img {
+    background-color: #808080;
+    border-radius: 10px;
+    margin: 8px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img {
+    height: 120px;
+}
+
+.card-div-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-type {
+    color: #ffffff;
+    border-radius: 30px;
+    background-color: #800080 ;
+    border: 1px solid #800080;
+    padding: 2px 5px;
+    margin-bottom: 5px;
+    font-size: 10px;
+    text-transform: capitalize;
+}
