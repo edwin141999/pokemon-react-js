@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getInfoPokemonAPI } from "../services/pokemon-api";
 import "./Card.css";
 
 export default function Card({ name, url }) {
@@ -6,23 +7,27 @@ export default function Card({ name, url }) {
     const [loading, setLoading] = useState(true);
     const colors = {
         poison: "#a040a0",
-        fire: "#f08030",
+        fire: "#E83A0B",
         water: "#6890f0",
         bug: "#a8b820",
-    };
-    const getInfoPokemon = () => {
-        setLoading(true);
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                setInfoPokemon(data);
-                setLoading(false);
-            });
+        grass: "#6AB630",
+        flying: "#A2B2F7",
+        normal: "#A8A878",
+        electric: "#F8D030",
+        ground: "#E0C068",
+        fairy: "#EE99AC",
+        fighting: "#C03028",
     };
 
     useEffect(() => {
+        const getInfoPokemon = async () => {
+            setLoading(true);
+            const info = await getInfoPokemonAPI(url);
+            setInfoPokemon(info);
+            setLoading(false);
+        };
         getInfoPokemon();
-    }, []);
+    }, [url]);
 
     return loading ? (
         <h1 className="card-titulo">Loading..</h1>
@@ -41,7 +46,14 @@ export default function Card({ name, url }) {
             <div className="card-div-type">
                 {infoPokemon.types.map((type) => {
                     return (
-                        <button key={name} className="card-type">
+                        <button
+                            key={name}
+                            className="card-type"
+                            style={{
+                                backgroundColor: colors[type.type.name],
+                                border: `1px solid ${colors[type.type.name]}`,
+                            }}
+                        >
                             {type.type.name}
                         </button>
                     );

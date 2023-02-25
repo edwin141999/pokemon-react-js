@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
+import { getPokemonAPI } from "../services/pokemon-api";
 import "./Home.css";
 
 export default function Home() {
     const [pokemon, setPokemon] = useState([]);
-    const getPokemon = () => {
-        fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=56")
-            .then((response) => response.json())
-            .then((data) => {
-                setPokemon(data.results);
-            });
-    };
 
     useEffect(() => {
-        getPokemon();
+        const getPokemons = async () => {
+            const pokemons = await getPokemonAPI();
+            setPokemon(pokemons);
+        };
+        getPokemons();
     }, []);
 
     return (
