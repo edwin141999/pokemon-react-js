@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Oval } from "react-loader-spinner";
 import { getInfoPokemonAPI } from "../services/pokemon-api";
 import "./Card.css";
 
@@ -29,36 +30,55 @@ export default function Card({ name, url }) {
         getInfoPokemon();
     }, [url]);
 
-    return loading ? (
-        <h1 className="card-titulo">Loading..</h1>
-    ) : (
+    return (
         <div className="card-fondo">
-            <h4 className="card-titulo">
-                {name} {infoPokemon.id}
-            </h4>
-            <div className="card-div-img">
-                <img
-                    src={infoPokemon.sprites.front_default}
-                    alt={name}
-                    className="card-img"
-                />
-            </div>
-            <div className="card-div-type">
-                {infoPokemon.types.map((type) => {
-                    return (
-                        <button
-                            key={name}
-                            className="card-type"
-                            style={{
-                                backgroundColor: colors[type.type.name],
-                                border: `1px solid ${colors[type.type.name]}`,
-                            }}
-                        >
-                            {type.type.name}
-                        </button>
-                    );
-                })}
-            </div>
+            {loading ? (
+                <div className="card-div-loader">
+                    <Oval
+                        height={80}
+                        width={80}
+                        color="#000000"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                        ariaLabel="oval-loading"
+                        secondaryColor="#ffffff"
+                        strokeWidth={2}
+                        strokeWidthSecondary={2}
+                    />
+                </div>
+            ) : (
+                <>
+                    <h4 className="card-titulo">
+                        {name} {infoPokemon.id}
+                    </h4>
+                    <div className="card-div-img">
+                        <img
+                            src={infoPokemon.sprites.front_default}
+                            alt={name}
+                            className="card-img"
+                        />
+                    </div>
+                    <div className="card-div-type">
+                        {infoPokemon.types.map((type) => {
+                            return (
+                                <button
+                                    key={name}
+                                    className="card-type"
+                                    style={{
+                                        backgroundColor: colors[type.type.name],
+                                        border: `1px solid ${
+                                            colors[type.type.name]
+                                        }`,
+                                    }}
+                                >
+                                    {type.type.name}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </>
+            )}
         </div>
     );
 }

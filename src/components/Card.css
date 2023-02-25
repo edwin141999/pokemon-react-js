@@ -5,6 +5,14 @@
     padding: 5px 0;
 }
 
+.card-div-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 180px;
+}
+
 .card-titulo {
     color: #ffffff;
     padding: 0;

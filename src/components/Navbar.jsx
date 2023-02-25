@@ -9,6 +9,8 @@ import "./Navbar.css";
 export default function Navbar() {
     const [types, setTypes] = useState([]);
     const [abilities, setAbilities] = useState([]);
+    const [namePokemon, setNamePokemon] = useState("");
+    
     useEffect(() => {
         const getTypes = async () => {
             const types = await getTypePokemonAPI();
@@ -32,6 +34,9 @@ export default function Navbar() {
                 type="text"
                 placeholder="Enter Pokemon name or id..."
                 className="navbar-search"
+                onChange={(e) => {
+                    setNamePokemon(e.target.value);
+                }}
             />
             <div className="navbar-div-filter">
                 <h4>Filter by Type</h4>
