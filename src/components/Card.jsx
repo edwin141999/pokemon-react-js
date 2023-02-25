@@ -60,10 +60,10 @@ export default function Card({ name, url }) {
                         />
                     </div>
                     <div className="card-div-type">
-                        {infoPokemon.types.map((type) => {
+                        {infoPokemon.types.map((type, index) => {
                             return (
                                 <button
-                                    key={name}
+                                    key={`${name},' - ', ${index}`}
                                     className="card-type"
                                     style={{
                                         backgroundColor: colors[type.type.name],

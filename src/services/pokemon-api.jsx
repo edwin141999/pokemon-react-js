@@ -35,3 +35,31 @@ export const getAbilitiesPokemonAPI = async () => {
         });
     return result;
 };
+
+// BUSQUEDA POR NOMBRE
+export const getPokemonByNameAPI = async (name) => {
+    const result = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${name}`
+    ).then((response) => response.json());
+    return result;
+};
+
+// BUSQUEDA POR TIPO
+export const getPokemonByTypeAPI = async (type) => {
+    const result = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
+        .then((response) => response.json())
+        .then((data) => {
+            return data.pokemon;
+        });
+    return result;
+};
+
+// BUSQUEDA POR HABILIDAD
+export const getPokemonByAbilityAPI = async (ability) => {
+    const result = await fetch(`https://pokeapi.co/api/v2/ability/${ability}`)
+        .then((response) => response.json())
+        .then((data) => {
+            return data.pokemon;
+        });
+    return result;
+};

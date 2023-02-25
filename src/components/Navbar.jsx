@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "../images/pokemon-logo.png";
+import {
+    setSearchPokemon,
+    setSearchResults,
+} from "../redux-toolkit/searchPokemon";
 import {
     getAbilitiesPokemonAPI,
     getTypePokemonAPI,
@@ -9,8 +14,17 @@ import "./Navbar.css";
 export default function Navbar() {
     const [types, setTypes] = useState([]);
     const [abilities, setAbilities] = useState([]);
-    const [namePokemon, setNamePokemon] = useState("");
-    
+    const allPokemons = useSelector((state) => state.search.allPokemons);
+
+    const dispatch = useDispatch();
+    const handleSearch = (e) => {
+        dispatch(setSearchPokemon(e.target.value));
+        const pokemonFilter = allPokemons.filter((pokemon) => {
+            return pokemon.name.includes(e.target.value);
+        });
+        dispatch(setSearchResults(pokemonFilter));
+    };
+
     useEffect(() => {
         const getTypes = async () => {
             const types = await getTypePokemonAPI();
@@ -32,11 +46,9 @@ export default function Navbar() {
             <img src={Logo} alt="" className="navbar-img" />
             <input
                 type="text"
-                placeholder="Enter Pokemon name or id..."
+                placeholder="Enter Pokemon name..."
                 className="navbar-search"
-                onChange={(e) => {
-                    setNamePokemon(e.target.value);
-                }}
+                onChange={handleSearch}
             />
             <div className="navbar-div-filter">
                 <h4>Filter by Type</h4>

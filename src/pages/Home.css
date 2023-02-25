@@ -1,13 +1,16 @@
 .home-div {
     padding: 50px;
-    background: rgb(2, 0, 36);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 30px;
+}
+
+.div-background {
     background: linear-gradient(
         160deg,
         rgba(2, 0, 36, 1) 0%,
         rgba(156, 156, 241, 1) 50%,
         rgba(0, 212, 255, 1) 100%
     );
-    display: grid;
-    grid-template-columns: repeat(7,1fr);
-    grid-gap: 30px;
+    min-height: 92.5vh;
 }
