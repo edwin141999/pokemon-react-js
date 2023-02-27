@@ -7,6 +7,8 @@ import {
 } from "../redux-toolkit/searchPokemon";
 import {
     getAbilitiesPokemonAPI,
+    getPokemonByAbilityAPI,
+    getPokemonByTypeAPI,
     getTypePokemonAPI,
 } from "../services/pokemon-api";
 import "./Navbar.css";
@@ -23,6 +25,24 @@ export default function Navbar() {
             return pokemon.name.includes(e.target.value);
         });
         dispatch(setSearchResults(pokemonFilter));
+    };
+
+    const handleType = async (e) => {
+        const typePokemon = await getPokemonByTypeAPI(e);
+        const allTypePokemons = [];
+        for (const element of typePokemon) {
+            allTypePokemons.push(element.pokemon);
+        }
+        dispatch(setSearchResults(allTypePokemons));
+    };
+
+    const handleAbilities = async (e) => {
+        const abilityPokemon = await getPokemonByAbilityAPI(e);
+        const allAbilityPokemons = [];
+        for (const element of abilityPokemon) {
+            allAbilityPokemons.push(element.pokemon);
+        }
+        dispatch(setSearchResults(allAbilityPokemons));
     };
 
     useEffect(() => {
@@ -52,7 +72,14 @@ export default function Navbar() {
             />
             <div className="navbar-div-filter">
                 <h4>Filter by Type</h4>
-                <select name="type" id="type" className="navbar-filter-type">
+                <select
+                    name="type"
+                    id="type"
+                    className="navbar-filter-type"
+                    onChange={(e) => {
+                        handleType(e.target.value);
+                    }}
+                >
                     {types.map((type) => (
                         <option key={type.name} value={type.name}>
                             {type.name}
@@ -66,6 +93,9 @@ export default function Navbar() {
                     name="abilities"
                     id="abilities"
                     className="navbar-filter-abilities"
+                    onChange={(e) => {
+                        handleAbilities(e.target.value);
+                    }}
                 >
                     {abilities.map((ability) => (
                         <option key={ability.name} value={ability.name}>
@@ -73,6 +103,16 @@ export default function Navbar() {
                         </option>
                     ))}
                 </select>
+            </div>
+            <div>
+                <button
+                    className="navbar-button"
+                    onClick={() => {
+                        dispatch(setSearchResults(allPokemons));
+                    }}
+                >
+                    Clean
+                </button>
             </div>
         </div>
     );

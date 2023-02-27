@@ -15,26 +15,50 @@ export default function Home() {
     const searchPokemon = useSelector((state) => state.search.searchText);
     const dispatch = useDispatch();
 
+    const [offset, setOffset] = useState(0);
+
     const getPokemons = async () => {
-        const pokemons = await getPokemonAPI();
+        const pokemons = await getPokemonAPI(offset, 49);
         dispatch(setSearchResults(pokemons));
         dispatch(getAllPokemon(pokemons));
         setPokemon(pokemons);
     };
 
+    const handleNext = () => {
+        setOffset(offset + 49);
+    };
+
+    const handlePrevious = () => {
+        setOffset(offset - 49);
+    };
+
     useEffect(() => {
         getPokemons();
-    }, []);
+    }, [offset]);
 
     useEffect(() => {
         setPokemon(searchResults);
-        if (searchPokemon === "") {
-            getPokemons();
-        }
     }, [searchResults, searchPokemon]);
 
     return (
         <div className="div-background">
+            <div className="div-btn">
+                {offset === 0 ? (
+                    <button disabled className="btn-disabled">
+                        Previous
+                    </button>
+                ) : (
+                    <button
+                        className="btn-change"
+                        onClick={() => handlePrevious()}
+                    >
+                        Previous
+                    </button>
+                )}
+                <button className="btn-change" onClick={() => handleNext()}>
+                    Next
+                </button>
+            </div>
             <div className="home-div">
                 {pokemon.map((pokemon) => (
                     <Card

@@ -18,6 +18,13 @@ export default function Card({ name, url }) {
         ground: "#E0C068",
         fairy: "#EE99AC",
         fighting: "#C03028",
+        psychic: "#F85888",
+        rock: "#B8A038",
+        ice: "#98D8D8",
+        ghost: "#705898",
+        dragon: "#7038F8",
+        steel: "#B8B8D0",
+        dark: "#705848",
     };
 
     useEffect(() => {
