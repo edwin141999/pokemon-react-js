@@ -11,6 +11,7 @@ import {
   getPokemonByTypeAPI,
   getTypePokemonAPI,
 } from "../services/pokemon-api";
+import Button from "./Button";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -24,7 +25,6 @@ export default function Navbar() {
     const pokemonFilter = allPokemons.filter((pokemon) => {
       return pokemon.name.includes(e.target.value);
     });
-    // TODO: Deshabilitar los botones de anterior y siguiente si el tamaño del array es menor a 48
     dispatch(setSearchResults(pokemonFilter));
   };
 
@@ -105,14 +105,13 @@ export default function Navbar() {
           ))}
         </select>
       </div>
-      <button
-        className="navbar-button"
+      <Button
+        className={"navbar-button"}
+        text={"Limpiar"}
         onClick={() => {
           dispatch(setSearchResults(allPokemons));
         }}
-      >
-        Limpiar
-      </button>
+      />
     </nav>
   );
 }

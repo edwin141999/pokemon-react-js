@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "../components/Button";
 import Card from "../components/Card";
 import {
   getAllPokemon,
@@ -43,18 +44,25 @@ export default function Home() {
   return (
     <div className="div-background">
       <header className="div-btn">
-        {offset === 0 ? (
-          <button disabled className="btn-disabled">
-            Anterior
-          </button>
-        ) : (
-          <button className="btn-change" onClick={() => handlePrevious()}>
-            Anterior
-          </button>
+        {console.log(pokemon)}
+        {pokemon.length === 48 && (
+          <>
+            {offset === 0 ? (
+              <Button className={"btn-disabled"} text={"Anterior"} />
+            ) : (
+              <Button
+                className={"btn-change"}
+                text={"Anterior"}
+                onClick={() => handlePrevious()}
+              />
+            )}
+            <Button
+              className={"btn-change"}
+              text={"Siguiente"}
+              onClick={() => handleNext()}
+            />
+          </>
         )}
-        <button className="btn-change" onClick={() => handleNext()}>
-          Siguiente
-        </button>
       </header>
       <section className="home-div">
         {pokemon.map((pokemon) => (
