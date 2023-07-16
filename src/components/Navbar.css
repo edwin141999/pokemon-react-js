@@ -1,74 +1,74 @@
 .navbar {
-    display: flex;
-    background-color: #f84c4c;
-    height: 50px;
-    padding: 0 60px;
-    align-items: center;
+  display: flex;
+  background-color: #f84c4c;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-img {
-    height: 35px;
+  height: 35px;
 }
 
 .navbar-search {
-    height: 20px;
-    border-radius: 20px;
-    border: none;
-    width: 200px;
-    padding: 3px;
-    margin: 0 40px;
-    padding-left: 15px;
-    outline: none;
+  height: 20px;
+  border-radius: 20px;
+  border: none;
+  width: 220px;
+  padding: 3px;
+  margin: 0 40px;
+  padding-left: 15px;
+  outline: none;
 }
 
 .navbar-div-filter {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-right: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 40px;
 }
 
 .navbar-filter-type {
-    font-size: 15px;
-    font-weight: 400;
-    text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
 }
 
 .navbar-filter-abilities {
-    font-size: 15px;
-    font-weight: 400;
-    text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
 }
 
-.navbar-button{
-    background-color: #000000;
-    border: none;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 400;
-    padding: 5px 25px;
-    outline: none;
-    border-radius: 20px;
-    cursor: pointer;
+.navbar-button {
+  background-color: #000000;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 5px 25px;
+  outline: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 h4 {
-    font-weight: 400;
-    font-size: 15px;
+  font-weight: 400;
+  font-size: 15px;
 }
 
 select {
-    border: none;
-    border-bottom: solid 1px #000;
-    background-color: transparent;
-    color: #000;
-    font-size: 15px;
-    font-weight: 400;
-    width: 150px;
-    height: 40px;
+  border: none;
+  border-bottom: solid 1px #000;
+  background-color: transparent;
+  color: #000;
+  font-size: 15px;
+  font-weight: 400;
+  width: 150px;
+  height: 40px;
 }
 
 option {
-    display: flex;
-    text-align: center;
+  display: flex;
+  text-align: center;
 }
