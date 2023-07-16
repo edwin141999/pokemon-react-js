@@ -24,6 +24,7 @@ export default function Navbar() {
     const pokemonFilter = allPokemons.filter((pokemon) => {
       return pokemon.name.includes(e.target.value);
     });
+    // TODO: Deshabilitar los botones de anterior y siguiente si el tamaño del array es menor a 48
     dispatch(setSearchResults(pokemonFilter));
   };
 
@@ -104,16 +105,14 @@ export default function Navbar() {
           ))}
         </select>
       </div>
-      <div>
-        <button
-          className="navbar-button"
-          onClick={() => {
-            dispatch(setSearchResults(allPokemons));
-          }}
-        >
-          Limpiar
-        </button>
-      </div>
+      <button
+        className="navbar-button"
+        onClick={() => {
+          dispatch(setSearchResults(allPokemons));
+        }}
+      >
+        Limpiar
+      </button>
     </nav>
   );
 }
