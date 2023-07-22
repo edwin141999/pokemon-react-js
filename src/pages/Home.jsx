@@ -18,13 +18,6 @@ export default function Home() {
 
   const [offset, setOffset] = useState(0);
 
-  const getPokemons = async () => {
-    const pokemons = await getPokemonAPI(offset, 48);
-    dispatch(setSearchResults(pokemons));
-    dispatch(getAllPokemon(pokemons));
-    setPokemon(pokemons);
-  };
-
   const handleNext = () => {
     setOffset(offset + 48);
   };
@@ -34,8 +27,14 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const getPokemons = async () => {
+      const pokemons = await getPokemonAPI(offset, 48);
+      dispatch(setSearchResults(pokemons));
+      dispatch(getAllPokemon(pokemons));
+      setPokemon(pokemons);
+    };
     getPokemons();
-  }, [offset]);
+  }, [dispatch, offset]);
 
   useEffect(() => {
     setPokemon(searchResults);
@@ -44,7 +43,6 @@ export default function Home() {
   return (
     <div className="div-background">
       <header className="div-btn">
-        {console.log(pokemon)}
         {pokemon.length === 48 && (
           <>
             {offset === 0 ? (

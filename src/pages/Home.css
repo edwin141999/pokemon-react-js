@@ -44,7 +44,12 @@
   display: inline-block;
   font-size: 16px;
   border-radius: 10px;
-  opacity: 0.5;
   width: 120px;
   font-family: "Montserrat", sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  .home-div {
+    grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+  }
 }
