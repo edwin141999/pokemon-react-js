@@ -1,31 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Oval } from "react-loader-spinner";
-import { getInfoPokemonAPI } from "../../services/pokemon-api";
-import "./Card.css";
+import "../../assets/styles/Card.css";
+import { getInfoPokemonAPI } from "../../middleware/pokemon-api";
+import { COLORS } from "../../services/constants/colorsConstants";
 
 export default function Card({ name, url }) {
   const [infoPokemon, setInfoPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
-  const colors = {
-    poison: "#a040a0",
-    fire: "#E83A0B",
-    water: "#6890f0",
-    bug: "#a8b820",
-    grass: "#6AB630",
-    flying: "#A2B2F7",
-    normal: "#A8A878",
-    electric: "#F8D030",
-    ground: "#E0C068",
-    fairy: "#EE99AC",
-    fighting: "#C03028",
-    psychic: "#F85888",
-    rock: "#B8A038",
-    ice: "#98D8D8",
-    ghost: "#705898",
-    dragon: "#7038F8",
-    steel: "#B8B8D0",
-    dark: "#705848",
-  };
 
   useEffect(() => {
     const getInfoPokemon = async () => {
@@ -74,8 +55,8 @@ export default function Card({ name, url }) {
                   key={nameIndex}
                   className="card-type"
                   style={{
-                    backgroundColor: colors[type.type.name],
-                    border: `1px solid ${colors[type.type.name]}`,
+                    backgroundColor: COLORS[type.type.name],
+                    border: `1px solid ${COLORS[type.type.name]}`,
                   }}
                 >
                   {type.type.name}

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Logo from "../../assets/images/pokemon-logo.png";
+import "../../assets/styles/Navbar.css";
 import Button from "../../components/Button";
 import SVGMenu from "../../components/SVGMenu";
-import Logo from "../../images/pokemon-logo.png";
-import {
-  setSearchPokemon,
-  setSearchResults,
-} from "../../redux-toolkit/searchPokemon";
 import {
   getAbilitiesPokemonAPI,
   getPokemonByAbilityAPI,
   getPokemonByTypeAPI,
   getTypePokemonAPI,
-} from "../../services/pokemon-api";
-import "./Navbar.css";
+} from "../../middleware/pokemon-api";
+import {
+  setSearchPokemon,
+  setSearchResults,
+} from "../../redux-toolkit/searchPokemon";
 
 export default function Navbar() {
   const [types, setTypes] = useState([]);
