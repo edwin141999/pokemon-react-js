@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../components/Button";
-import Card from "../components/Card";
+import Button from "../../components/Button";
+import Card from "../../components/Card";
 import {
   getAllPokemon,
   setSearchResults,
-} from "../redux-toolkit/searchPokemon";
-import { getPokemonAPI } from "../services/pokemon-api";
+} from "../../redux-toolkit/searchPokemon";
+import { getPokemonAPI } from "../../services/pokemon-api";
 import "./Home.css";
 
 export default function Home() {

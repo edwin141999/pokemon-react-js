@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Oval } from "react-loader-spinner";
-import { getInfoPokemonAPI } from "../services/pokemon-api";
+import { getInfoPokemonAPI } from "../../services/pokemon-api";
 import "./Card.css";
 
 export default function Card({ name, url }) {
