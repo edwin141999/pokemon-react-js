@@ -9,6 +9,15 @@ export const getPokemonAPI = async (offset, limit) => {
   return result;
 };
 
+export const getOnePokemonAPI = async (id) => {
+  const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+  return result;
+}
+
 export const getInfoPokemonAPI = async (url) => {
   const result = await fetch(url)
     .then((response) => response.json())
@@ -35,6 +44,15 @@ export const getAbilitiesPokemonAPI = async () => {
     });
   return result;
 };
+
+export const getSpeciesPokemonAPI = async (id) => {
+  const result = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+  return result;
+}
 
 // BUSQUEDA POR NOMBRE
 export const getPokemonByNameAPI = async (name) => {

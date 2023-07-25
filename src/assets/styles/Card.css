@@ -17,6 +17,10 @@
   height: 180px;
 }
 
+.card-link{
+  text-decoration: none;
+}
+
 .card-titulo {
   color: #ffffff;
   padding: 0;

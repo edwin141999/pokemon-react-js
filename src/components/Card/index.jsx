@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Oval } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 import "../../assets/styles/Card.css";
 import { getInfoPokemonAPI } from "../../middleware/pokemon-api";
 import { COLORS } from "../../services/constants/colorsConstants";
@@ -7,6 +8,8 @@ import { COLORS } from "../../services/constants/colorsConstants";
 export default function Card({ name, url }) {
   const [infoPokemon, setInfoPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const IDPokemon = url.split("/")[6];
 
   useEffect(() => {
     const getInfoPokemon = async () => {
@@ -36,7 +39,7 @@ export default function Card({ name, url }) {
           />
         </div>
       ) : (
-        <>
+        <Link to={`details/${IDPokemon}`} className="card-link">
           <h4 className="card-titulo">
             {name} {infoPokemon.id}
           </h4>
@@ -64,7 +67,7 @@ export default function Card({ name, url }) {
               );
             })}
           </div>
-        </>
+        </Link>
       )}
     </div>
   );

@@ -1,0 +1,115 @@
+/* .background-main {
+  background: linear-gradient(
+    160deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(106, 182, 48, 1) 50%,
+    rgba(160, 64, 160, 1) 100%
+  );
+  min-height: 100vh;
+} */
+/* BOTON */
+.btn-back {
+  background-color: #000000;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  width: 120px;
+  height: 50px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+.details-fondo {
+  display: flex;
+  flex-direction: row;
+}
+
+/* CARTA DETALLES */
+.card-details {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  border-radius: 5px;
+  padding: 5px 0;
+  border: #000000 1px solid;
+}
+
+/* TITULO */
+.details-title {
+  font-weight: 900;
+  font-size: 35px;
+  text-transform: capitalize;
+}
+
+/* TIPOS */
+.details-type {
+  display: flex;
+  align-items: center;
+}
+
+.card-type {
+  color: #ffffff;
+  border-radius: 30px;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  font-size: 10px;
+  text-transform: capitalize;
+}
+
+/* IMAGEN */
+.details-div-img {
+  display: flex;
+  justify-content: center;
+}
+
+.details-img {
+  height: 15rem;
+}
+
+/* ALTURA Y PESO */
+.height-weight {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.hw-title {
+  font-size: 15px;
+}
+
+.hw-subtitle {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+/* STATS */
+.stats {
+  text-transform: capitalize;
+}
+
+.stats-details {
+  display: flex;
+  flex-direction: row;
+}
+
+/* BARRA DE PROGRESO */
+.animated-progress {
+  height: 15px;
+  border-radius: 5px;
+  border: 1px solid rgb(229, 231, 235);
+  overflow: hidden;
+  position: relative;
+}
+
+.animated-progress span {
+  height: 100%;
+  display: block;
+  line-height: 30px;
+  position: absolute;
+  text-align: end;
+  padding-right: 5px;
+  background-color: #000000;
+}
