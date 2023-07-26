@@ -33,37 +33,36 @@ export default function Details() {
   }, [pokemonId]);
 
   return (
-    <main>
-      <Button
-        onClick={() => handleBack()}
-        text={"Atras"}
-        className={"btn-back"}
-      />
+    <main className="main-background">
       {loading ? (
-        <Oval
-          height={80}
-          width={80}
-          color="#000000"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-          ariaLabel="oval-loading"
-          secondaryColor="#ffffff"
-          strokeWidth={2}
-          strokeWidthSecondary={2}
-        />
+        <div className="oval-loading">
+          <Oval
+            height={80}
+            width={80}
+            color="#000000"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="oval-loading"
+            secondaryColor="#ffffff"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        </div>
       ) : (
         <div className="details-fondo">
+          {/* CARD DETAILS */}
           <div className="card-details">
-            <h1 className="details-title">
-              {info.name} #{pokemonId}
-            </h1>
+            <p className="details-title-name">
+              {info.name}
+              <span className="details-title-id"> #{pokemonId}</span>
+            </p>
             <div className="details-type">
               {info.types.map((type, index) => {
                 return (
                   <button
-                    key={`${info.name} - ${pokemonId}`}
-                    className="card-type"
+                    key={`${info.name} - ${type.type.name}`}
+                    className="details-card-type"
                     style={{
                       backgroundColor: COLORS[type.type.name],
                       border: `1px solid ${COLORS[type.type.name]}`,
@@ -76,7 +75,7 @@ export default function Details() {
             </div>
             <div className="details-div-img">
               <img
-                src={info.sprites.front_default}
+                src={info.sprites.other["official-artwork"].front_default}
                 alt={info.name}
                 className="details-img"
               />
@@ -84,19 +83,19 @@ export default function Details() {
             <div className="height-weight">
               <h4 className="hw-title">Height</h4>
               <h4 className="hw-title">Weight</h4>
-              <p className="hw-subtitle">{info.height} m</p>
-              <p className="hw-subtitle">{info.weight} kg</p>
+              <p className="hw-subtitle">{info.height}.00 m</p>
+              <p className="hw-subtitle">{info.weight}.00 kg</p>
             </div>
             <div className="stats">
               {info.stats.map((stat, index) => {
                 return (
                   <>
                     <div
-                      key={`${info.name} - ${pokemonId} - ${stat.stat.name}`}
+                      key={`${info.name} - ${stat.stat.name}`}
                       className="stats-details"
                     >
-                      <h4>{stat.stat.name}</h4>
-                      <p>: {stat.base_stat}</p>
+                      <h4 className="details-stats-name">{stat.stat.name}</h4>
+                      <p className="details-base-stats">: {stat.base_stat}</p>
                     </div>
                     <div className="animated-progress progress-blue">
                       <span style={{ width: `${stat.base_stat}px` }}></span>
@@ -106,28 +105,27 @@ export default function Details() {
               })}
             </div>
           </div>
-          <div>
-            <div>
+          {/* INFO DETAILS */}
+          <div className="info-details">
+            <div className="details">
               <h3>Description</h3>
               <p>{species.flavor_text_entries[0].flavor_text}</p>
             </div>
-            <div>
+            <div className="details">
               <h3>Abilities</h3>
               {info.abilities.map((ability, index) => {
                 return (
-                  <div
-                    key={`${info.name} - ${pokemonId} - ${ability.ability.name}`}
-                  >
+                  <div key={`${info.name} - ${ability.ability.name}`}>
                     <h4>{ability.ability.name}</h4>
                   </div>
                 );
               })}
             </div>
-            <div>
+            <div className="details">
               <h3>Color</h3>
               <p>{species.color.name}</p>
             </div>
-            <div>
+            <div className="details">
               <h3>Egg group</h3>
               {species.egg_groups.map((egg, index) => {
                 return (
@@ -137,10 +135,15 @@ export default function Details() {
                 );
               })}
             </div>
-            <div>
+            <div className="details">
               <h3>Catch Rate</h3>
               <p>{species.capture_rate}%</p>
             </div>
+            <Button
+              onClick={() => handleBack()}
+              text={"Regresar"}
+              className={"details-btn-back"}
+            />
           </div>
         </div>
       )}

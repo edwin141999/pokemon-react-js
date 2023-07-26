@@ -6,6 +6,7 @@ import Button from "../../components/Button";
 import SVGMenu from "../../components/SVGMenu";
 import {
   getAbilitiesPokemonAPI,
+  getPokemonAPI,
   getPokemonByAbilityAPI,
   getPokemonByTypeAPI,
   getTypePokemonAPI,
@@ -19,18 +20,30 @@ export default function Navbar() {
   const [types, setTypes] = useState([]);
   const [abilities, setAbilities] = useState([]);
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+  // const [clean, setClean] = useState(false);
 
   const allPokemons = useSelector((state) => state.search.allPokemons);
 
   const dispatch = useDispatch();
-  const handleSearch = (e) => {
+
+  // BUSQUEDA POR NOMBRE
+  const handleSearch = async (e) => {
+    if (e.target.value === "") return dispatch(setSearchResults(allPokemons));
+
+    // if (clean) {
+    //   setClean(false);
+    //   return dispatch(setSearchResults(allPokemons));
+    // }
+
     dispatch(setSearchPokemon(e.target.value));
-    const pokemonFilter = allPokemons.filter((pokemon) => {
+    const allTypePokemons = await getPokemonAPI(0, 1118);
+    const pokemonFilter = allTypePokemons.filter((pokemon) => {
       return pokemon.name.includes(e.target.value);
     });
     dispatch(setSearchResults(pokemonFilter));
   };
 
+  // BUSQUEDA POR TIPO
   const handleType = async (e) => {
     const typePokemon = await getPokemonByTypeAPI(e);
     const allTypePokemons = [];
@@ -40,6 +53,7 @@ export default function Navbar() {
     dispatch(setSearchResults(allTypePokemons));
   };
 
+  // BUSQUEDA POR HABILIDAD
   const handleAbilities = async (e) => {
     const abilityPokemon = await getPokemonByAbilityAPI(e);
     const allAbilityPokemons = [];
@@ -81,6 +95,7 @@ export default function Navbar() {
       >
         <ul>
           <div className="navbar-ul-div">
+            {/* TODO: Limpiar el input al darle al boton */}
             <input
               type="text"
               placeholder="Introduce el nombre del Pokémon..."

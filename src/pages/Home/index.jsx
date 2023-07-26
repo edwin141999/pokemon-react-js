@@ -29,8 +29,10 @@ export default function Home() {
   useEffect(() => {
     const getPokemons = async () => {
       const pokemons = await getPokemonAPI(offset, 48);
+      // const allPokemons = await getPokemonAPI(0, 1118);
       dispatch(setSearchResults(pokemons));
       dispatch(getAllPokemon(pokemons));
+      // dispatch(getAllPokemon(allPokemons));
       setPokemon(pokemons);
     };
     getPokemons();
