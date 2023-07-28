@@ -1,20 +1,5 @@
-/* .background-main {
-  background: linear-gradient(
-    160deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(106, 182, 48, 1) 50%,
-    rgba(160, 64, 160, 1) 100%
-  );
-  min-height: 100vh;
-} */
 /* FONDO */
 .main-background {
-  /* background: linear-gradient(
-    160deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(106, 182, 48, 1) 50%,
-    rgba(160, 64, 160, 1) 100%
-  ); */
   min-height: 100vh;
 }
 

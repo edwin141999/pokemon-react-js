@@ -33,6 +33,9 @@ export default function Details() {
   }, [pokemonId]);
 
   return (
+    // TODO: Agregar el diseño responsivo
+    // TODO: Ver como traducir los datos de la API
+    // TODO: Checar el warning que aparece al recargar la pagina de Details
     <main className="main-background">
       {loading ? (
         <div className="oval-loading">
@@ -50,7 +53,22 @@ export default function Details() {
           />
         </div>
       ) : (
-        <div className="details-fondo">
+        <div
+          className="details-fondo"
+          style={
+            info.types.length === 1
+              ? {
+                  background: `linear-gradient(160deg, rgba(2, 0, 36, 1) 0%, ${
+                    COLORS[info.types[0].type.name]
+                  } 50%, ${COLORS[info.types[0].type.name]} 100%)`,
+                }
+              : {
+                  background: `linear-gradient(160deg, rgba(2, 0, 36, 1) 0%, ${
+                    COLORS[info.types[0].type.name]
+                  } 50%, ${COLORS[info.types[1].type.name]} 100%)`,
+                }
+          }
+        >
           {/* CARD DETAILS */}
           <div className="card-details">
             <p className="details-title-name">
@@ -129,7 +147,7 @@ export default function Details() {
               <h3>Egg group</h3>
               {species.egg_groups.map((egg, index) => {
                 return (
-                  <div key={`${info.name} - ${pokemonId} - ${egg.name}`}>
+                  <div key={`${info.name} - ${egg.name}`}>
                     <h4>{egg.name}</h4>
                   </div>
                 );
