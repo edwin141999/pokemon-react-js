@@ -33,9 +33,6 @@ export default function Details() {
   }, [pokemonId]);
 
   return (
-    // TODO: Agregar el diseño responsivo
-    // TODO: Ver como traducir los datos de la API
-    // TODO: Checar el warning que aparece al recargar la pagina de Details
     <main className="main-background">
       {loading ? (
         <div className="oval-loading">
@@ -107,18 +104,15 @@ export default function Details() {
             <div className="stats">
               {info.stats.map((stat, index) => {
                 return (
-                  <>
-                    <div
-                      key={`${info.name} - ${stat.stat.name}`}
-                      className="stats-details"
-                    >
+                  <div key={`${info.name} - ${stat.stat.name}`}>
+                    <div className="stats-details">
                       <h4 className="details-stats-name">{stat.stat.name}</h4>
                       <p className="details-base-stats">: {stat.base_stat}</p>
                     </div>
                     <div className="animated-progress progress-blue">
                       <span style={{ width: `${stat.base_stat}px` }}></span>
                     </div>
-                  </>
+                  </div>
                 );
               })}
             </div>
