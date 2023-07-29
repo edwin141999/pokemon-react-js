@@ -20,7 +20,6 @@ export default function Navbar() {
   const [types, setTypes] = useState([]);
   const [abilities, setAbilities] = useState([]);
   const [isNavExpanded, setIsNavExpanded] = useState(false);
-  // const [clean, setClean] = useState(false);
 
   const allPokemons = useSelector((state) => state.search.allPokemons);
 
@@ -29,11 +28,6 @@ export default function Navbar() {
   // BUSQUEDA POR NOMBRE
   const handleSearch = async (e) => {
     if (e.target.value === "") return dispatch(setSearchResults(allPokemons));
-
-    // if (clean) {
-    //   setClean(false);
-    //   return dispatch(setSearchResults(allPokemons));
-    // }
 
     dispatch(setSearchPokemon(e.target.value));
     const allTypePokemons = await getPokemonAPI(0, 1118);
@@ -61,6 +55,17 @@ export default function Navbar() {
       allAbilityPokemons.push(element.pokemon);
     }
     dispatch(setSearchResults(allAbilityPokemons));
+  };
+
+  // LIMPIAR DATOS
+  const handleClean = () => {
+    dispatch(setSearchResults(allPokemons));
+    // Limpiar el input
+    document.querySelector(".navbar-search").value = "";
+    // Limpiar el select de tipos
+    document.querySelector(".navbar-filter-type").value = "";
+    // Limpiar el select de habiiidades
+    document.querySelector(".navbar-filter-abilities").value = "";
   };
 
   useEffect(() => {
@@ -95,7 +100,6 @@ export default function Navbar() {
       >
         <ul>
           <div className="navbar-ul-div">
-            {/* TODO: Limpiar el input al darle al boton */}
             <input
               type="text"
               placeholder="Introduce el nombre del Pokémon..."
@@ -140,7 +144,7 @@ export default function Navbar() {
               className={"navbar-button"}
               text={"Limpiar"}
               onClick={() => {
-                dispatch(setSearchResults(allPokemons));
+                handleClean();
               }}
             />
           </div>
