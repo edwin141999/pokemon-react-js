@@ -40,6 +40,8 @@
 
 .card-img {
   height: 120px;
+  display: flex;
+  align-items: center;
 }
 
 .card-div-type {

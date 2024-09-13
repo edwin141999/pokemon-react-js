@@ -119,41 +119,51 @@ export default function Details() {
           </div>
           {/* INFO DETAILS */}
           <div className="info-details">
-            <div className="details">
-              <h3>Description</h3>
-              <p>{species.flavor_text_entries[0].flavor_text}</p>
-            </div>
-            <div className="details">
-              <h3>Abilities</h3>
-              {info.abilities.map((ability, index) => {
-                return (
-                  <div key={`${info.name} - ${ability.ability.name}`}>
-                    <h4>{ability.ability.name}</h4>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="details">
-              <h3>Color</h3>
-              <p>{species.color.name}</p>
-            </div>
-            <div className="details">
-              <h3>Egg group</h3>
-              {species.egg_groups.map((egg, index) => {
-                return (
-                  <div key={`${info.name} - ${egg.name}`}>
-                    <h4>{egg.name}</h4>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="details">
-              <h3>Catch Rate</h3>
-              <p>{species.capture_rate}%</p>
-            </div>
+            <table className="details">
+              <tbody>
+                <tr>
+                  <th scope="row">Description</th>
+                  <td>{species.flavor_text_entries[0].flavor_text}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Abilities</th>
+                  <td>
+                    {info.abilities.map((ability, index) => {
+                      return (
+                        <div key={`${info.name} - ${ability.ability.name}`}>
+                          {ability.ability.name}
+                        </div>
+                      );
+                    })}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Color</th>
+                  <td>{species.color.name}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Egg group</th>
+                  <td>
+                    {species.egg_groups.map((egg, index) => {
+                      return (
+                        <div key={`${info.name} - ${egg.name}`}>{egg.name}</div>
+                      );
+                    })}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Catch Rate</th>
+                  <td>{species.capture_rate}%</td>
+                </tr>
+                <tr>
+                  <th scope="row">Generation</th>
+                  <td>{species.generation.name}</td>
+                </tr>
+              </tbody>
+            </table>
             <Button
               onClick={() => handleBack()}
-              text={"Regresar"}
+              text={"Return"}
               className={"details-btn-back"}
             />
           </div>
