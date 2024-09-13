@@ -19,20 +19,18 @@ export default function Home() {
   const [offset, setOffset] = useState(0);
 
   const handleNext = () => {
-    setOffset(offset + 48);
+    setOffset(offset + 27);
   };
 
   const handlePrevious = () => {
-    setOffset(offset - 48);
+    setOffset(offset - 27);
   };
 
   useEffect(() => {
     const getPokemons = async () => {
-      const pokemons = await getPokemonAPI(offset, 48);
-      // const allPokemons = await getPokemonAPI(0, 1118);
+      const pokemons = await getPokemonAPI(offset, 27);
       dispatch(setSearchResults(pokemons));
       dispatch(getAllPokemon(pokemons));
-      // dispatch(getAllPokemon(allPokemons));
       setPokemon(pokemons);
     };
     getPokemons();
@@ -45,20 +43,20 @@ export default function Home() {
   return (
     <div className="div-background">
       <header className="div-btn">
-        {pokemon.length === 48 && (
+        {pokemon.length === 27 && (
           <>
             {offset === 0 ? (
-              <Button className={"btn-disabled"} text={"Anterior"} />
+              <Button className={"btn-disabled"} text={"Previous"} />
             ) : (
               <Button
                 className={"btn-change"}
-                text={"Anterior"}
+                text={"Previous"}
                 onClick={() => handlePrevious()}
               />
             )}
             <Button
               className={"btn-change"}
-              text={"Siguiente"}
+              text={"Next"}
               onClick={() => handleNext()}
             />
           </>

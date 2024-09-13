@@ -29,10 +29,10 @@ export default function Navbar() {
   const handleSearch = async (e) => {
     if (e.target.value === "") return dispatch(setSearchResults(allPokemons));
 
-    dispatch(setSearchPokemon(e.target.value));
+    dispatch(setSearchPokemon(e.target.value.toLowerCase()));
     const allTypePokemons = await getPokemonAPI(0, 1118);
     const pokemonFilter = allTypePokemons.filter((pokemon) => {
-      return pokemon.name.includes(e.target.value);
+      return pokemon.name.includes(e.target.value.toLowerCase());
     });
     dispatch(setSearchResults(pokemonFilter));
   };
@@ -86,7 +86,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <img src={Logo} alt="Logo de pokemon" className="navbar-img" />
+        <img src={Logo} alt="Logo de pokemon" className="navbar-img" />
       <button
         className="hamburger"
         onClick={() => [setIsNavExpanded(!isNavExpanded)]}
@@ -102,12 +102,12 @@ export default function Navbar() {
           <div className="navbar-ul-div">
             <input
               type="text"
-              placeholder="Introduce el nombre del Pokémon..."
+              placeholder="Which Pokémon?"
               className="navbar-search"
               onChange={handleSearch}
             />
             <div className="navbar-div-filter">
-              <h4>Filtrar por Tipo</h4>
+              <h4>Select type</h4>
               <select
                 name="type"
                 id="type"
@@ -123,8 +123,9 @@ export default function Navbar() {
                 ))}
               </select>
             </div>
-            <div className="navbar-div-filter">
-              <h4>Filtrar por habilidades</h4>
+            {/* TODO: MEJORAR EL FILTRADO POR HABILIDADES */}
+            {/* <div className="navbar-div-filter">
+              <h4>Select ability</h4>
               <select
                 name="abilities"
                 id="abilities"
@@ -139,10 +140,10 @@ export default function Navbar() {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
             <Button
               className={"navbar-button"}
-              text={"Limpiar"}
+              text={"Clean"}
               onClick={() => {
                 handleClean();
               }}
