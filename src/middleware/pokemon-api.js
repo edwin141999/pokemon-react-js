@@ -47,11 +47,17 @@ export const getAbilitiesPokemonAPI = async () => {
 
 export const getSpeciesPokemonAPI = async (id) => {
   const result = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status !== 404) return response.json()
+    })
     .then((data) => {
+      if (data === undefined) {
+        return null
+      }
       return data;
-    });
+    })
   return result;
+
 }
 
 // BUSQUEDA POR NOMBRE
