@@ -44,7 +44,7 @@
   width: 22rem;
   height: fit-content;
   border-radius: 10px;
-  padding: 1rem 1.5rem;
+  padding: .5rem 1rem;
   border: rgb(229, 231, 235) 2px solid;
   gap: 5px;
   background-color: #ffffff;
@@ -84,7 +84,7 @@
 }
 
 .details-img {
-  height: 15rem;
+  height: 13rem;
 }
 
 /* ALTURA Y PESO */
@@ -141,6 +141,13 @@
   text-align: end;
   padding-right: 5px;
   background-color: #000000;
+}
+
+/* BOTON BACK */
+.button-return{
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
 }
 
 /* INFO DETAILS */
